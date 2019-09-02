@@ -18,6 +18,7 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
-Route::get('/tasks', 'TaskController@index');
-Route::post('/task', 'TaskController@store');
-Route::delete('/task/{task}', 'TaskController@destroy');
+Route::get('/tasks', 'TaskController@index')->middleware('auth');
+Route::patch('/task/{task}','TaskController@update')->middleware('auth');
+Route::delete('/task/{task}', 'TaskController@destroy')->middleware('auth');
+Route::post('/task', 'TaskController@store')->middleware('auth');
