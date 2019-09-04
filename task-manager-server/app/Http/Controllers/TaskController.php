@@ -21,6 +21,7 @@ class TaskController extends Controller
     public function index(Request $request)
     {
         $tasks = $request->user()->tasks;
+        return response().json(tasks);
         return view('tasks.index',compact('tasks'));
     }
 
